@@ -204,18 +204,18 @@ printf "# %s\n- manufacturer: %s\n- platform: %s\n- codename: %s\n- flavor: %s\n
 cat "$PROJECT_DIR"/working/"${UNZIP_DIR}"/README.md
 
 # create TWRP device tree if possible
-if [[ "$is_ab" = true ]]; then
-    twrpimg="$PROJECT_DIR"/working/"${UNZIP_DIR}"/"boot.img"
-else
-    twrpimg="$PROJECT_DIR"/working/"${UNZIP_DIR}"/"recovery.img"
-fi
-if [[ -f "${twrpimg}" ]]; then
-    twrpdt="$PROJECT_DIR"/working/"${UNZIP_DIR}"/twrp-device-tree
-    python3 -m twrpdtgen "$twrpimg" --output "$twrpdt"
-    if [[ "$?" = 0 ]]; then
-        [[ ! -e "$twrpdt"/README.md ]] && curl https://raw.githubusercontent.com/wiki/SebaUbuntu/TWRP-device-tree-generator/4.-Build-TWRP-from-source.md > "$twrpdt"/README.md
-    fi
-fi
+#if [[ "$is_ab" = true ]]; then
+#    twrpimg="$PROJECT_DIR"/working/"${UNZIP_DIR}"/"boot.img"
+#else
+#    twrpimg="$PROJECT_DIR"/working/"${UNZIP_DIR}"/"recovery.img"
+#fi
+#if [[ -f "${twrpimg}" ]]; then
+#    twrpdt="$PROJECT_DIR"/working/"${UNZIP_DIR}"/twrp-device-tree
+#    python3 -m twrpdtgen "$twrpimg" --output "$twrpdt"
+#    if [[ "$?" = 0 ]]; then
+#        [[ ! -e "$twrpdt"/README.md ]] && curl https://raw.githubusercontent.com/wiki/SebaUbuntu/TWRP-device-tree-generator/4.-Build-TWRP-from-source.md > "$twrpdt"/README.md
+#    fi
+#fi
 
 # copy file names
 chown "$(whoami)" ./* -R
